@@ -10,8 +10,6 @@ default_param = CONFIG_DB_CONNECT_PARAM = {
     password: ENV['API_DB_PASS']
 }
 
-DEFAULT_DB_CONNECT_PARAM = default_param
+DB = Sequel.connect(default_param)
 
-DB ||= Sequel.connect(DEFAULT_DB_CONNECT_PARAM)
-
-LOGGER.debug("Database connection: #{DB.inspect}") if @log
+LOGGER.info("Database connection: #{DB.inspect}")
