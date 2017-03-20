@@ -15,11 +15,11 @@ class Imdb
      RestClient.get @url + "?json=1&nr=1&nm=on&q=#{name}"
   end
 
-  def actor_id(actor)
-    result = JSON.parse(find_person(actor))
-    people = result["name_popular"] || result["name_exact"] if result
+  def actor_imdb_id(full_name, first_name, last_name)
+    result = JSON.parse(find_person(full_name))
+    people = result["name_popular"] || result["name_exact"] || result["name_approx"] if result
     person = people[0]
-    return nil unless actor.downcase == person["name"].downcase
+    return nil unless "#{first_name} #{last_name}".downcase == person["name"].downcase
     person["id"]
   end
 end

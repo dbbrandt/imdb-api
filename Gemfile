@@ -8,3 +8,4 @@ gem "pg"
 gem "sequel"
 gem "json", '1.8.3'
 gem "slop"
+gem "pry"
